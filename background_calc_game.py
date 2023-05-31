@@ -9,7 +9,6 @@ xCoorPlayer = 0
 
 total = 0 
 gameRunning = true
-addSum = 0
 scalefactor = 200
 
 class calc: 
