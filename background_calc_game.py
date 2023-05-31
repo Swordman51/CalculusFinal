@@ -14,8 +14,8 @@ scalefactor = 200
 class calc: 
   def refreshScore(): 
     while gameRunning: 
-    time.sleep(.1)
-    total += yCoorPlayer/scalefactor
+        time.sleep(.1)
+        total += yCoorPlayer/scalefactor
     
  
   
