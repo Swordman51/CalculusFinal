@@ -7,16 +7,22 @@ from pygame.locals import *
 xCoorPlayer = 0 
 
 
-total = 0 
+totalVolume = 0 
 gameRunning = true
 scalefactor = 200
 
 class calc: 
-  def refreshScore(): 
+  def refreshScoreVolume(): 
     while gameRunning: 
         time.sleep(.1)
-        total += yCoorPlayer/scalefactor
-    
+        totalVolume += yCoorPlayer/scalefactor
+
+  def arcLengthRefresh(): 
+    while gameRunning: 
+      initXCoorPlayer = xCoorPlayer
+      
+      initXCoorPlayer = yCoorPlayer
+  
  
   
 
