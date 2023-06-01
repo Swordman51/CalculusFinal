@@ -76,7 +76,8 @@ while True:
     #if you call the method with the name of the object created in front, you don't need to provide the self argument
     #however, if you call the class method, you need to provide the name of the object created.
     #Hero.Show(screen)
-    
+
+    #real
 
   
     pygame.display.update()

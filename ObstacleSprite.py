@@ -1,5 +1,5 @@
 import pygame
-import random
+from RandomGeneration import *
 from pygame.locals import *
 
 class Obstacle:
@@ -7,7 +7,7 @@ class Obstacle:
     def __init__(self, screenheight, screenwidth, imagefile):
 
         self.shape = pygame.image.load(imagefile)
-
+        self.shape = pygame.transform.scale(self.shape, (GenRandomXOb(10, 100), GenRandomYOb(50, 150)))
         #self.top = screenheight - self.shape.get_height()
         self.top = screenheight
         #self.left = screenwidth/2 - self.shape.get_width()/2
