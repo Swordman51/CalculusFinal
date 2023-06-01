@@ -3,6 +3,13 @@ import sys
 import os 
 import time
 from pygame.locals import * 
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy as sy
+
+
+
+
 
 xCoorPlayer = 0 
 
@@ -10,6 +17,9 @@ xCoorPlayer = 0
 totalVolume = 0 
 gameRunning = true
 scalefactor = 200
+
+
+
 
 class calc: 
   def refreshScoreVolume(): 
@@ -19,9 +29,11 @@ class calc:
 
   def arcLengthRefresh(): 
     while gameRunning: 
-      initXCoorPlayer = xCoorPlayer
+      initYCoorPlayer = yCoorPlayer
+      time.sleep(.1)
+      finalYCoorPlayer = yCoorPlayer
       
-      initXCoorPlayer = yCoorPlayer
+
   
  
   
