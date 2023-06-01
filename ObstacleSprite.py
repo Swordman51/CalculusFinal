@@ -14,7 +14,7 @@ class Obstacle:
         self.left = screenheight
 
 
-    def Show(self, surface):
+    def Show(self, surface): 
 
         surface.blit(self.shape, (self.left, self.top))
 
@@ -23,4 +23,8 @@ class Obstacle:
     def UpdateCoords(self, y):
 
         self.top = y-self.shape.get_width()/2
+
+
+#change
+#hello
 

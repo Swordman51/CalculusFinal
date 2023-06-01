@@ -23,7 +23,7 @@ obstacle = Obstacle(GenRandomXOb(ObstacleXFloor, ObstacleXCeiling), GenRandomYOb
 
 # Set the framerate
 
-framerate = 100
+framerate = 100 
 
 
 
