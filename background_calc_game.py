@@ -1,6 +1,7 @@
 import pygame
 import sys 
 import os 
+import math
 import time
 from pygame.locals import * 
 import matplotlib.pyplot as plt
@@ -26,6 +27,9 @@ class calc:
     while gameRunning: 
         time.sleep(updateMathTime)
         totalVolume += yCoorPlayer/scalefactor
+  
+  def f(dydx): 
+    return math.sqrt(1+(dydx ** 2))
 
   def arcLengthRefresh(): 
     while gameRunning: 
@@ -36,12 +40,12 @@ class calc:
       changeY = finalYCoorPlayer - initYCoorPlayer # change in y over the time interval
       dydx = changeY/changeX
 
-      def f(x): 
-      	return sqrt(1+dydx)
+ 
 
       x = sy.Symbol("x")
-      totalArcLength += (sy.integrate(f(x), (x, 0, changeX)))
+      totalArcLength += (sy.integrate(calc.f(dydx), (x, 0, changeX)))
 
+  
       
 
   
