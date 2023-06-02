@@ -9,6 +9,7 @@ from CharacterSprite import *
 from ObstacleSprite import *
 from pygame.locals import *
 from movmentMethods import *
+from background_calc_game import *
 
 pygame.init()  # initialize pygame
 

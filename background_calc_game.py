@@ -15,7 +15,7 @@ xCoorPlayer = 0
 
 totalArcLength = 0
 totalVolume = 0 
-gameRunning = true
+gameRunning = True
 scalefactor = 200
 updateMathTime = .1 # time inerval used to calculate the integral and the arc length 
 
@@ -41,6 +41,7 @@ class calc:
 
       x = sy.Symbol("x")
       totalArcLength += (sy.integrate(f(x), (x, 0, changeX)))
+
       
 
   
