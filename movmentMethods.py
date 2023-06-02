@@ -1,6 +1,9 @@
 import pygame
 
+from RandomGeneration import *
+from ObstacleSprite import *
 from pygame.locals import *
+from Variables import *
 
 class ScrollingBackground:
 
@@ -35,6 +38,11 @@ class ScrollingBackground:
             self.coord[1] = self.y_original
 
             self.coord2[1] = self.y2_original
+
+    def DropOb():
+        pos = GenRandomXOb(1, 1400)
+        if (len(Obstacles) < 10):
+            Obstacles.insert(Obstacle())
 
     
         

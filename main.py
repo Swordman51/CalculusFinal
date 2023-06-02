@@ -14,7 +14,7 @@ pygame.init()  # initialize pygame
 
 clock = pygame.time.Clock()
 
-screenwidth, screenheight = (1200, 960)
+screenwidth, screenheight = (1400, 780)
 
 screen = pygame.display.set_mode((screenwidth, screenheight))
 
@@ -34,8 +34,10 @@ bg_speed = 100
 # Load the background image here. Make sure the file exists!
 
 #bg = pygame.image.load(os.path.join("./backgrounds", "blue.png"))
+bg_img = pygame.image.load('./backgrounds/blue.png')
+bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
 
-StarField = ScrollingBackground(screenheight/2, "./backgrounds/warhammer.jpg")
+#StarField = ScrollingBackground(screenheight/2, "./backgrounds/warhammer.jpg")
 
 pygame.mouse.set_visible(0)
 
@@ -53,6 +55,8 @@ while True:
     
     time = clock.tick(framerate)/1000.0
 
+    
+
     x, y = pygame.mouse.get_pos()
 
 
@@ -63,9 +67,7 @@ while True:
             sys.exit()
 
 
-    StarField.UpdateCoords(bg_speed, time)
-
-    StarField.Show(screen)
+    screen.blit(bg_img, (0, 0))
     
 
     x, y = pygame.mouse.get_pos()

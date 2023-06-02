@@ -24,7 +24,8 @@ class Obstacle:
 
         self.top = y-self.shape.get_width()/2
 
-
+    
+   
 #change
 #hello
 
