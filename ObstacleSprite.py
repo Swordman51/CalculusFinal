@@ -3,15 +3,12 @@ from RandomGeneration import *
 from pygame.locals import *
 
 class Obstacle:
-
     def __init__(self, screenheight, screenwidth, imagefile):
 
         self.shape = pygame.image.load(imagefile)
-        self.shape = pygame.transform.scale(self.shape, (GenRandomXOb(10, 100), GenRandomYOb(50, 150)))
-        #self.top = screenheight - self.shape.get_height()
+        self.shape = pygame.transform.scale(self.shape, (GenRandomYOb(50, 150), GenRandomXOb(10, 100)))
         self.top = screenheight
-        #self.left = screenwidth/2 - self.shape.get_width()/2
-        self.left = screenheight
+        self.left = screenwidth
 
 
     def Show(self, surface): 
@@ -22,7 +19,7 @@ class Obstacle:
     #the first parameter is always the instance the method is called on (self)
     def UpdateCoords(self, y):
 
-        self.top = y-self.shape.get_width()/2
+        self.left = y
 
     
    
