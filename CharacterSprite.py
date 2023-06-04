@@ -17,7 +17,7 @@ class Character:
 
 
     def drawCircle(self, surface):
-        pygame.draw.circle(surface, BLUE, (self.X, self.Y), 9) 
+        pygame.draw.circle(surface, RED, (self.X, self.Y), 9) 
 
     def Show(self, surface):
 

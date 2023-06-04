@@ -10,9 +10,6 @@ from pygame.locals import *
 from movmentMethods import *
 from background_calc_game import *
 
-
-
-
 pygame.init()  # initialize pygame
 
 clock = pygame.time.Clock()
@@ -25,22 +22,16 @@ screen = pygame.display.set_mode((screenwidth, screenheight))
 obstacle = Obstacle(GenRandomXOb(ObstacleXFloor, ObstacleXCeiling), GenRandomYOb(ObstacleXFloor, ObstacleXCeiling), "./backgrounds/EVIL.png")
 character = Character(HeroX, HeroY)
 # Set the framerate
-
 framerate = 100 
 
 
 
-# Set the background scrolling speed
 
-bg_speed = 100
 
 # Load the background image here. Make sure the file exists!
 
-#bg = pygame.image.load(os.path.join("./backgrounds", "blue.png"))
 bg_img = pygame.image.load('./backgrounds/blue.png')
 bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
-
-#counter, text = 0, '0'.rjust(3)
 
 pygame.mouse.set_visible(0)
 
@@ -49,7 +40,7 @@ Generate = False
 Switch = False
 
 # fix indentation
-font = pygame.font.SysFont('Consolas', 30)
+font = pygame.font.SysFont('Consolas', 20)
 start_ticks=pygame.time.get_ticks() #starter tick
 while True:
 
@@ -59,27 +50,60 @@ while True:
     #screen.blit(bg, (0, 0))
  
 
-    x, y = pygame.mouse.get_pos()
+    #x, y = pygame.mouse.get_pos()
 
 
     for event in pygame.event.get():
-
         if event.type == pygame.QUIT:
-
+            pygame.quit()
             sys.exit()
+        elif event.type == pygame.KEYDOWN: #means that the key is pressed down
+            if event.key == pygame.K_UP: #it'll only change when the key is hit once
+                accel_y = -5
+            elif event.key == pygame.K_DOWN:
+                accel_y = 5
+        elif event.type == pygame.KEYUP:
+            if event.key in (pygame.K_UP, pygame.K_DOWN):
+                accel_y = 0
+
+        y_change += accel_y
+
+        if abs(y_change) >= max_speed_up:  # If max_speed is exceeded.
+        # Normalize the x_change and multiply it with the max_speed.
+        # Essentially just set it to max speed
+            y_change = y_change/abs(y_change) * max_speed_up
+        
+        
+
+        # Decelerate if no key is pressed.
+    if accel_y == 0:
+        y_change *= 0.92
+
+    character.Y += y_change  # Move the object.
+
+    if (character.Y > 771):
+        character.Y = 771
+    
+    if (character.Y < 9):
+        character.Y = 9
+
+
+
+
+
 
 
     screen.blit(bg_img, (0, 0))
        
     #time = clock.tick(framerate)/1000.0
     seconds=(pygame.time.get_ticks()-start_ticks)/1000
-    timer = str(seconds)
+    timer = "Time = " + str(round(seconds, 2))
     Timer = font.render(timer, True, (0, 0, 0))
-    screen.blit(Timer, (1300, 48))
+    screen.blit(Timer, (1200, 48))
+    calc.DisplayPolarFunction(screen, character, font)
 
     if (int(seconds) % 5 == 0 and TimeBetweenDrop > 1):
         if Switch == False:
-            Difficulty += 1
             TimeBetweenDrop -= 1
             Switch = True
     else:
