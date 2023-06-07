@@ -1,4 +1,5 @@
 import pygame
+import sys
 import ObstacleSprite
 from RandomGeneration import *
 from ObstacleSprite import *
@@ -42,5 +43,6 @@ class ScrollingBackground:
             #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
             #object go downward
 
+    
     
         

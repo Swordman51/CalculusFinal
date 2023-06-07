@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sy
 
+#from main import *
+from fractions import Fraction
 
 
 
@@ -57,13 +59,21 @@ class calc:
     RExpression = "Radians = " + str(round(Rad, 2))
     Ang = font.render(AExpression, True, (0, 0, 0))
     Radians = font.render(RExpression, True, (0, 0, 0))
-    screen.blit(Timer, (1200, 70))
-    screen.blit(Ang, (1200, 90))
-    screen.blit(Radians, (1200, 110))
+    screen.blit(Timer, (1100, 45))
+    screen.blit(Ang, (1100, 65))
+    screen.blit(Radians, (1100, 85))
 
   
-  #def DisplayParametricFunction(screen, Character, font):
-    #PositionFunction = 
+  def DisplayVectorFunction(screen, Character, font):
+    PositionFunction = "▲X = " + str((int)(Character.X)) +"i + " + str((int)(780 - Character.Y)) +"j"
+    VelocityFunction = "V = " +str((int)(Character.x_change)) + " dx/dt + " + str((int)(Character.y_change)) + " dy/dt"
+    AccelerationFunction = "a = " + str((int)(Character.accel_x)) + " d^2x/dt^2 + "+ str((int)(Character.accel_y)) + "d^2y/dt^2"
+    Pos = font.render(PositionFunction, True, (0, 0, 0))
+    Vel = font.render(VelocityFunction, True, (0, 0, 0))
+    Acel = font.render(AccelerationFunction, True, (0, 0, 0))
+    screen.blit(Pos, (1100, 125))
+    screen.blit(Vel, (1100, 145))
+    screen.blit(Acel, (1100, 165))
 
   
  

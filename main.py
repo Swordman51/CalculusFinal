@@ -28,6 +28,7 @@ framerate = 100
 
 
 
+
 # Load the background image here. Make sure the file exists!
 
 bg_img = pygame.image.load('./backgrounds/blue.png')
@@ -40,7 +41,7 @@ Generate = False
 Switch = False
 
 # fix indentation
-font = pygame.font.SysFont('Consolas', 20)
+font = pygame.font.SysFont('Consolas', 18)
 start_ticks=pygame.time.get_ticks() #starter tick
 while True:
 
@@ -59,27 +60,40 @@ while True:
             sys.exit()
         elif event.type == pygame.KEYDOWN: #means that the key is pressed down
             if event.key == pygame.K_UP: #it'll only change when the key is hit once
-                accel_y = -5
+                character.accel_y = -5
             elif event.key == pygame.K_DOWN:
-                accel_y = 5
+                character.accel_y = 5
+            elif event.key == pygame.K_RIGHT:
+                character.accel_x = 5
         elif event.type == pygame.KEYUP:
             if event.key in (pygame.K_UP, pygame.K_DOWN):
-                accel_y = 0
+                character.accel_y = 0
+            if event.key == pygame.K_RIGHT:
+                character.accel_x = 0
 
-        y_change += accel_y
+        character.y_change += character.accel_y
+        character.x_change += character.accel_x
 
-        if abs(y_change) >= max_speed_up:  # If max_speed is exceeded.
+        if abs(character.y_change) >= max_speed_V:  # If max_speed is exceeded.
         # Normalize the x_change and multiply it with the max_speed.
         # Essentially just set it to max speed
-            y_change = y_change/abs(y_change) * max_speed_up
+            character.y_change = character.y_change/abs(character.y_change) * max_speed_V
         
+        if abs(character.x_change) >= max_speed_H:  # If max_speed is exceeded.
+        # Normalize the x_change and multiply it with the max_speed.
+        # Essentially just set it to max speed
+            character.x_change = character.x_change/abs(character.x_change) * max_speed_H
         
 
         # Decelerate if no key is pressed.
-    if accel_y == 0:
-        y_change *= 0.92
+    if character.accel_y == 0:
+        character.y_change *= 0.92
 
-    character.Y += y_change  # Move the object.
+    if character.accel_x == 0:
+        character.x_change *= 0.92
+
+    character.Y += character.y_change  # Move the object.
+    character.X += character.x_change
 
     if (character.Y > 771):
         character.Y = 771
@@ -87,9 +101,14 @@ while True:
     if (character.Y < 9):
         character.Y = 9
 
+    if (character.X > 1391):
+        character.X = 1391
+    
+    if (character.X < 109):
+        character.X = 109
 
 
-
+#implement backwards movement
 
 
 
@@ -99,8 +118,9 @@ while True:
     seconds=(pygame.time.get_ticks()-start_ticks)/1000
     timer = "Time = " + str(round(seconds, 2))
     Timer = font.render(timer, True, (0, 0, 0))
-    screen.blit(Timer, (1200, 48))
+    screen.blit(Timer, (1100, 23))
     calc.DisplayPolarFunction(screen, character, font)
+    calc.DisplayVectorFunction(screen, character, font)
 
     if (int(seconds) % 5 == 0 and TimeBetweenDrop > 1):
         if Switch == False:

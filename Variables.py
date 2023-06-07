@@ -13,7 +13,9 @@ RED = (255, 0, 0)
 
 y_change = 0
 accel_y = 0
-max_speed_up = 30
+max_speed_V = 30
 
-
+x_change = 0
+accel_x = 0
+max_speed_H = 30
 

@@ -11,6 +11,11 @@ from Variables import *
 #Easter eggs can be coded in later
 class Character:
 
+    accel_x = 0
+    accel_y = 0
+    x_change = 0
+    y_change = 0
+
     def __init__(self, X, Y):
         self.X = X
         self.Y = Y
@@ -22,7 +27,6 @@ class Character:
     def Show(self, surface):
 
         surface.blit(self.shape, (self.top, self.left))
-
 
 
     def UpdateCoords(self, x):
