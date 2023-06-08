@@ -29,7 +29,7 @@ class calc:
   def refreshScoreVolume(): 
     while gameRunning: 
         time.sleep(updateMathTime)
-        totalVolume += yCoorPlayer/scalefactor
+        totalVolume += Character.Y/scalefactor
   
   def f(dydx): 
     return math.sqrt(1+(dydx ** 2))
