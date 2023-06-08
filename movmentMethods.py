@@ -64,7 +64,7 @@ class ScrollingBackground:
         for pix in Pixels:
             initXPixelValue = pixel.x
             #top -= 40
-            pix.UpdateCoords(initPixelValue-1)
+            pix.UpdateCoords(initPixelValue-10)
             #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
             #object go downward
 
