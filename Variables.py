@@ -12,6 +12,7 @@ Gaming = False
 Dead = False
 
 GREEN = (0, 255, 0)
+RED = (255, 0, 0)
 ObstacleImg = "./backgrounds/EVIL.png"
 Obstacles = [] #you don't need to define the type of list, because you were providing an iterable when you weren't supposed to
 #you are supposed to put iterables in the brackets, and Obstacles aren't an iterable

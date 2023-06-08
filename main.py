@@ -49,11 +49,11 @@ start_ticks=pygame.time.get_ticks() #starter tick
 Beginning = True
 while True:
     
-    bg_img = pygame.image.load('./backgrounds/orange.png')
-    bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
+
     clock.tick(60)
     if (Beginning == True):
-        screen = pygame.display.set_mode((screenwidth, screenheight))
+        bg_img = pygame.image.load('./backgrounds/orange.png')
+        bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         #bg_img = pygame.image.load('./backgrounds/orange.png')
         #bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         text = font.render("Press B to begin (get it????)", True, (GREEN))
@@ -70,9 +70,7 @@ while True:
                     start_ticks = pygame.time.get_ticks()
         screen.blit(bg_img, (0, 0))
         screen.blit(text, (700, 350))
-        #print("deez")
-        print("deez")
-        ScrollingBackground.MakeNewPixel()
+        #ScrollingBackground.MakeNewPixel()
         
     #screen.blit(bg, (0, 0))
     #x, y = pygame.mouse.get_pos()
@@ -194,11 +192,13 @@ while True:
 
         #real
         if ScrollingBackground.CheckCollisions(character, Obstacles) == True:
-            DM = font.render(DeathMessage, True, (0, 0, 0))
-            screen.blit(DM, (700, 350))
+            time.sleep(1.0)
+            Beginning = False
+            Gaming = False
+            Dead = True
             #why is this always true????????
             #implement death message
-            print("lollmao")
+        
       
 
         character.drawCircle(screen)
@@ -209,9 +209,11 @@ while True:
        
 
     elif(Dead == True):
-        #bg_img = pygame.image.load('./backgrounds/black.jpg')
-       # bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
+        bg_img = pygame.image.load('./backgrounds/black.jpg')
+        bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         screen.blit(bg_img, (0, 0))
+        DM = font.render(DeathMessage, True, (0, 0, 0))
+        screen.blit(DM, (700, 350))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
