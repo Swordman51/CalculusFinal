@@ -67,6 +67,7 @@ while True:
                     start_ticks = pygame.time.get_ticks()
         screen.blit(bg_img, (0, 0))
         print("deez")
+        ScrollingBackground.MakeNewPixel()
         
     #screen.blit(bg, (0, 0))
     #x, y = pygame.mouse.get_pos()
@@ -179,6 +180,8 @@ while True:
                     Generate = True
         else:
             Generate = False
+    
+
         #if you call the method with the name of the object created in front, you don't need to provide the self argument
         #however, if you call the class method, you need to provide the name of the object created.
         #Hero.Show(screen)
