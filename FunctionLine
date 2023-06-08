@@ -1,0 +1,14 @@
+
+class pixel: 
+
+    black = (0,0,0)
+
+    def __init__(self, x, y):
+        self.x  = x
+        self.y = y
+
+    def drawPixel(surface): 
+        surface.set_at((self.x, self.y),black)  
+
+    def updateCoords(y):
+        self.y = y

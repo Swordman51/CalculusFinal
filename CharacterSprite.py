@@ -33,4 +33,5 @@ class Character:
 
         self.left = x-self.shape.get_width()/2
 
+
    

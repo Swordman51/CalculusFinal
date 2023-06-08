@@ -24,21 +24,20 @@ scalefactor = 200
 updateMathTime = .1 # time inerval used to calculate the integral and the arc length 
 
 
-
 class calc: 
   def refreshScoreVolume(): 
     while gameRunning: 
         time.sleep(updateMathTime)
-        totalVolume += yCoorPlayer/scalefactor
+        totalVolume += Character.Y/scalefactor
   
   def f(dydx): 
     return math.sqrt(1+(dydx ** 2))
 
   def arcLengthRefresh(): 
     while gameRunning: 
-      initYCoorPlayer = yCoorPlayer # initial y value
+      initYCoorPlayer = Character.Y # initial y value
       time.sleep(updateMathTime)
-      finalYCoorPlayer = yCoorPlayer # final y value
+      finalYCoorPlayer = Character.Y # final y value
       changeX = bg_speed * updateMathTime #change in x over the time interval
       changeY = finalYCoorPlayer - initYCoorPlayer # change in y over the time interval
       dydx = changeY/changeX
