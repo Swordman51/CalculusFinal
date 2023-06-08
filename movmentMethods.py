@@ -5,6 +5,8 @@ from RandomGeneration import *
 from ObstacleSprite import *
 from pygame.locals import *
 from Variables import *
+from CharacterSprite import *
+
 
 class ScrollingBackground:
 
@@ -43,6 +45,18 @@ class ScrollingBackground:
             #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
             #object go downward
 
+    def UpdateObPos(Character):
+        Character.X -= 5
+        if(Character.X <= 109):
+            Character.X = 109
     
+
+    def CheckCollisions(Character, Obstacles):
+        #if (len(Obstacles) > 0):
+            for obstacle in Obstacles:
+                if (Character.Y - 9 > obstacle.top and Character.Y + 9 < obstacle.height):
+                    if (Character.X + 9 < obstacle.length and Character.X - 9 < obstacle.left):
+                        collided = True
+
     
         

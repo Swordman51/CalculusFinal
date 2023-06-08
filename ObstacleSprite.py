@@ -6,7 +6,9 @@ class Obstacle:
     def __init__(self, screenheight, screenwidth, imagefile):
 
         self.shape = pygame.image.load(imagefile)
-        self.shape = pygame.transform.scale(self.shape, (GenRandomYOb(50, 150), GenRandomXOb(10, 100)))
+        self.height = GenRandomYOb(50, 150)
+        self.length = GenRandomXOb(10, 100)
+        self.shape = pygame.transform.scale(self.shape, (self.length, self.height))
         self.top = screenheight
         self.left = screenwidth
 

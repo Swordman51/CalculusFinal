@@ -66,8 +66,8 @@ class calc:
   
   def DisplayVectorFunction(screen, Character, font):
     PositionFunction = "▲X = " + str((int)(Character.X)) +"i + " + str((int)(780 - Character.Y)) +"j"
-    VelocityFunction = "V = " +str((int)(Character.x_change)) + " dx/dt + " + str((int)(Character.y_change)) + " dy/dt"
-    AccelerationFunction = "a = " + str((int)(Character.accel_x)) + " d^2x/dt^2 + "+ str((int)(Character.accel_y)) + "d^2y/dt^2"
+    VelocityFunction = "V = " +str((int)(Character.x_change)) + " dx/dt + " + str( -1 * (int)(Character.y_change)) + " dy/dt"
+    AccelerationFunction = "a = " + str((int)(Character.accel_x)) + " d^2x/dt^2 + "+ str( -1 *(int)(Character.accel_y)) + " d^2y/dt^2"
     Pos = font.render(PositionFunction, True, (0, 0, 0))
     Vel = font.render(VelocityFunction, True, (0, 0, 0))
     Acel = font.render(AccelerationFunction, True, (0, 0, 0))
