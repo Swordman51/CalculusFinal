@@ -1,6 +1,4 @@
 
-
-
 class functionLine: 
 
     black = (0,0,0)
@@ -14,5 +12,3 @@ class functionLine:
 
     def updateCoords(y):
         self.y = y
-
-
