@@ -1,1 +1,16 @@
 
+
+
+class functionLine: 
+
+    black = (0,0,0)
+
+    def __init__(self, x, y):
+        self.x  = x
+        self.y = y
+
+    def drawPixel(surface): 
+        color
+        surface.set_at((self.x, self.y),black)
+
+
