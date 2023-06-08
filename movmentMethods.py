@@ -32,7 +32,13 @@ class ScrollingBackground:
                 if (obstacle.left <= -100):
                     Obstacles.remove(obstacle)
 
-    # def MakeNewPixel(): 
+    def MakeNewPixel(): 
+        pix = pixel(character.X, character.Y)
+        Pixels.append(pix)
+        
+        for pix in Pixels: #condition that the pixel is going out of the screen
+            if(pixel.x <=0):
+                Pixels.remove(pix)
       
         
            
@@ -49,6 +55,16 @@ class ScrollingBackground:
             left = obstacle.left
             #top -= 40
             obstacle.UpdateCoords(left-10)
+            #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
+            #object go downward
+
+        for pix in Pixels:
+            pix.Show(surface)
+
+        for pix in Pixels:
+            initXPixelValue = pixel.x
+            #top -= 40
+            pix.UpdateCoords(initPixelValue-1)
             #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
             #object go downward
 
