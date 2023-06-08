@@ -36,9 +36,9 @@ class calc:
 
   def arcLengthRefresh(): 
     while gameRunning: 
-      initYCoorPlayer = yCoorPlayer # initial y value
+      initYCoorPlayer = Character.Y # initial y value
       time.sleep(updateMathTime)
-      finalYCoorPlayer = yCoorPlayer # final y value
+      finalYCoorPlayer = Character.Y # final y value
       changeX = bg_speed * updateMathTime #change in x over the time interval
       changeY = finalYCoorPlayer - initYCoorPlayer # change in y over the time interval
       dydx = changeY/changeX
