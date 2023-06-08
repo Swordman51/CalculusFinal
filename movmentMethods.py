@@ -6,6 +6,7 @@ from ObstacleSprite import *
 from pygame.locals import *
 from Variables import *
 from CharacterSprite import *
+from FunctionLine import* 
 
 
 class ScrollingBackground:
@@ -33,7 +34,7 @@ class ScrollingBackground:
                     Obstacles.remove(obstacle)
 
     def MakeNewPixel(): 
-        pix = pixel(character.X, character.Y)
+        pix = pixel(Character.X, Character.Y)
         Pixels.append(pix)
         
         for pix in Pixels: #condition that the pixel is going out of the screen
