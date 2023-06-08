@@ -36,7 +36,7 @@ font3 = pygame.font.SysFont('Stencil', 25)
 #bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
 
 
-pygame.mouse.set_visible(0)
+#pygame.mouse.set_visible(0)
 
 pygame.display.set_caption('March for Macragge')
 Generate = False
@@ -48,12 +48,15 @@ start_ticks=pygame.time.get_ticks() #starter tick
 Beginning = True
 while True:
     
+    bg_img = pygame.image.load('./backgrounds/orange.png')
+    bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
     clock.tick(60)
     if (Beginning == True):
-        
-        bg_img = pygame.image.load('./backgrounds/orange.png')
-        bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
-        
+        screen = pygame.display.set_mode((screenwidth, screenheight))
+        #bg_img = pygame.image.load('./backgrounds/orange.png')
+        #bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
+        text = font.render("Press B to begin (get it????)", True, (GREEN))
+       
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -65,12 +68,14 @@ while True:
                     Dead = False
                     start_ticks = pygame.time.get_ticks()
         screen.blit(bg_img, (0, 0))
-        print("deez")
+        screen.blit(text, (700, 350))
+        #print("deez")
         
     #screen.blit(bg, (0, 0))
     #x, y = pygame.mouse.get_pos()
 
     elif (Gaming == True):
+        #screen = pygame.display.set_mode((screenwidth, screenheight))
         bg_img = pygame.image.load('./backgrounds/blue.png')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         for event in pygame.event.get():
@@ -154,7 +159,7 @@ while True:
             taunt = "Are you ready for what is coming?"
             Taunt = font1.render(taunt, True, (0, 0, 0))
             screen.blit(Taunt, (700, 350))
-        elif((int)(seconds) < 16):
+        elif((int)(seconds) < 17):
          
             taunt = "Avoid them all"
             Taunt = font.render(taunt, True, (0, 0, 0))
@@ -195,11 +200,12 @@ while True:
         ScrollingBackground.UpdateObPos(character)
         #TODO WRITE NOT SO EASY NOW IS IT WHEN THE ONE SECOND STUFF STARTS
         ScrollingBackground.DropOb(screen)
-        pygame.display.update()
+
+       
 
     elif(Dead == True):
-        bg_img = pygame.image.load('./backgrounds/black.jpg')
-        bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
+        #bg_img = pygame.image.load('./backgrounds/black.jpg')
+       # bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         screen.blit(bg_img, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -213,5 +219,6 @@ while True:
 
                     #not overlaying the end screen for some reason
 
+    pygame.display.update()
 
 
