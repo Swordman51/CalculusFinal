@@ -10,6 +10,7 @@ from pygame.locals import *
 from movmentMethods import *
 from background_calc_game import *
 
+
 pygame.init()  # initialize pygame
 
 clock = pygame.time.Clock()
