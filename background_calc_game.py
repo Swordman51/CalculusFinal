@@ -24,7 +24,6 @@ scalefactor = 200
 updateMathTime = .1 # time inerval used to calculate the integral and the arc length 
 
 
-
 class calc: 
   def refreshScoreVolume(): 
     while gameRunning: 

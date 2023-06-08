@@ -29,6 +29,9 @@ class ScrollingBackground:
             for obstacle in Obstacles:
                 if (obstacle.left <= -100):
                     Obstacles.remove(obstacle)
+
+
+
             
 
     def DropOb(surface):

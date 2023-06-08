@@ -10,7 +10,7 @@ class functionLine:
         self.y = y
 
     def drawPixel(surface): 
-        surface.set_at((self.x, self.y),black)
+        surface.set_at((self.x, self.y),black)  
 
     def updateCoords(y):
         self.y = y
