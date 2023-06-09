@@ -70,7 +70,6 @@ while True:
                     start_ticks = pygame.time.get_ticks()
         screen.blit(bg_img, (0, 0))
         screen.blit(text, (700, 350))
-
         
         
     #screen.blit(bg, (0, 0))
@@ -85,20 +84,20 @@ while True:
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN: #means that the key is pressed down
-                if event.key == pygame.K_UP: #it'll only change when the key is hit once
-                    character.accel_y = -1
-                elif event.key == pygame.K_DOWN:
-                    character.accel_y = 1
-                elif event.key == pygame.K_RIGHT:
-                    character.accel_x = 1
+                if event.key == pygame.K_UP or event.key == pygame.K_w: #it'll only change when the key is hit once
+                    character.accel_y = -0.5
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                    character.accel_y = 0.5
+                elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+                    character.accel_x = 0.5
                 elif event.key == pygame.K_u:
                     Beginning = False
                     Gaming = False
                     Dead = True
             elif event.type == pygame.KEYUP:
-                if event.key in (pygame.K_UP, pygame.K_DOWN):
+                if event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_w, pygame.K_s):
                     character.accel_y = 0
-                if event.key == pygame.K_RIGHT:
+                if event.key in (pygame.K_RIGHT, pygame.K_d):
                     character.accel_x = 0
 
         character.y_change += character.accel_y
@@ -138,12 +137,13 @@ while True:
 
 
         screen.blit(bg_img, (0, 0))
+        ScrollingBackground.MakeNewPixel(character)
        
         #time = clock.tick(framerate)/1000.0
         seconds=(pygame.time.get_ticks()-start_ticks)/1000
         timer = "Time = " + str(round(seconds, 2))
         Timer = font.render(timer, True, (0, 0, 0))
-        screen.blit(Timer, (1100, 23))
+        screen.blit(Timer, (1050, 23))
         calc.DisplayPolarFunction(screen, character, font)
         calc.DisplayVectorFunction(screen, character, font)
 
@@ -197,16 +197,18 @@ while True:
             Beginning = False
             Gaming = False
             Dead = True
-            #why is this always true????????
-            #implement death message
         
       
 
         character.drawCircle(screen)
+        ScrollingBackground.MakeNewPixel(character)
         ScrollingBackground.UpdateObPos(character)
         #TODO WRITE NOT SO EASY NOW IS IT WHEN THE ONE SECOND STUFF STARTS
         ScrollingBackground.DropOb(screen)
-        ScrollingBackground.MakeNewPixel(character)
+        calc.refreshScoreVolume(character)
+        calc.arcLengthRefresh(character)
+        calc.DisplayScore(screen, font)
+        
 
        
 

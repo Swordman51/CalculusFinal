@@ -34,7 +34,7 @@ class ScrollingBackground:
                     Obstacles.remove(obstacle)
 
     def MakeNewPixel(character): 
-        pix = pixel(character.X, character.Y)
+        pix = pixel(character.X - 9, character.Y)
 
         Pixels.append(pix)
         
@@ -52,17 +52,18 @@ class ScrollingBackground:
         for obstacle in Obstacles:
             left = obstacle.left
             #top -= 40
-            obstacle.UpdateCoords(left-10)
+            obstacle.UpdateCoords(left-bg_speed)
             #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
             #object go downward
 
         for pix in Pixels:
-            pix.drawPixel(surface)
+            #pix.drawPixel(surface)
+            pix.drawRect(surface)
 
         for pix in Pixels:
             initXPixelValue = pix.x
             #top -= 40
-            pix.updateCoords(initXPixelValue-10)
+            pix.updateCoord(initXPixelValue-10)
             #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
             #object go downward
             

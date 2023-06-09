@@ -10,6 +10,10 @@ TimeBetweenDrop = 6
 Beginning = True
 Gaming = False
 Dead = False
+bg_speed = 10
+
+totalArcLength = 0
+totalVolume = 0
 
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
