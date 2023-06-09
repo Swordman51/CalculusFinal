@@ -70,7 +70,7 @@ while True:
                     start_ticks = pygame.time.get_ticks()
         screen.blit(bg_img, (0, 0))
         screen.blit(text, (700, 350))
-        #ScrollingBackground.MakeNewPixel()
+        ScrollingBackground.MakeNewPixel(character)
         
     #screen.blit(bg, (0, 0))
     #x, y = pygame.mouse.get_pos()
