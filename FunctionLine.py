@@ -1,3 +1,4 @@
+from Variables import *
 class pixel: 
 
     black = (0,0,0)
@@ -6,8 +7,8 @@ class pixel:
         self.x  = x
         self.y = y
 
-    def drawPixel(surface): 
-        surface.set_at((self.x, self.y),black)  
+    def drawPixel(self, surface):
+        surface.set_at(((int)(self.x), (int)(self.y)), BLACK)  
 
-    def updateCoords(y):
+    def updateCoords(self, y):
         self.y = y

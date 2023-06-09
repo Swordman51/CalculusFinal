@@ -13,11 +13,11 @@ Dead = False
 
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+BLACK = (0, 0, 0)
 ObstacleImg = "./backgrounds/EVIL.png"
 Obstacles = [] #you don't need to define the type of list, because you were providing an iterable when you weren't supposed to
 #you are supposed to put iterables in the brackets, and Obstacles aren't an iterable
 Pixels = [] # would this work for pixels in the line as well? 
-RED = (255, 0, 0)
 
 y_change = 0
 accel_y = 0

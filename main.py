@@ -70,7 +70,8 @@ while True:
                     start_ticks = pygame.time.get_ticks()
         screen.blit(bg_img, (0, 0))
         screen.blit(text, (700, 350))
-        ScrollingBackground.MakeNewPixel(character)
+
+        
         
     #screen.blit(bg, (0, 0))
     #x, y = pygame.mouse.get_pos()
@@ -185,7 +186,7 @@ while True:
         else:
             Generate = False
     
-
+        
         #if you call the method with the name of the object created in front, you don't need to provide the self argument
         #however, if you call the class method, you need to provide the name of the object created.
         #Hero.Show(screen)
@@ -205,7 +206,7 @@ while True:
         ScrollingBackground.UpdateObPos(character)
         #TODO WRITE NOT SO EASY NOW IS IT WHEN THE ONE SECOND STUFF STARTS
         ScrollingBackground.DropOb(screen)
-
+        ScrollingBackground.MakeNewPixel(character)
 
        
 
