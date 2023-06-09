@@ -212,8 +212,9 @@ while True:
         bg_img = pygame.image.load('./backgrounds/black.jpg')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         screen.blit(bg_img, (0, 0))
-        DM = font.render(DeathMessage, True, (0, 0, 0))
-        screen.blit(DM, (700, 350))
+        DM = font.render(DeathMessage, True, (255, 0, 0))
+        screen.blit(DM, (600, 350))
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -224,7 +225,6 @@ while True:
                     Gaming = False
                     Dead = False
 
-                    #not overlaying the end screen for some reason
 
     pygame.display.update()
 

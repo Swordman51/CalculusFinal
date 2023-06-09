@@ -74,7 +74,7 @@ class ScrollingBackground:
         #if (len(Obstacles) > 0):
             for obstacle in Obstacles:
                 if (Character.Y - 9 > obstacle.top and Character.Y + 9 < obstacle.top + obstacle.height):
-                    if (Character.X + 9 < obstacle.left + obstacle.length and Character.X - 9 < obstacle.left):
+                    if (Character.X + 9 < obstacle.left + obstacle.length and Character.X - 9 > obstacle.left):
                         return True
 
     
