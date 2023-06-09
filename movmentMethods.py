@@ -33,7 +33,7 @@ class ScrollingBackground:
                 if (obstacle.left <= -100):
                     Obstacles.remove(obstacle)
 
-    def MakeNewPixel(): 
+    def MakeNewPixel(character): 
         pix = pixel(character.X, character.Y)
         Pixels.append(pix)
         
