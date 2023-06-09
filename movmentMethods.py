@@ -34,7 +34,7 @@ class ScrollingBackground:
                     Obstacles.remove(obstacle)
 
     def MakeNewPixel(): 
-        pix = pixel(Character.X, Character.Y)
+        pix = pixel(character.X, character.Y)
         Pixels.append(pix)
         
         for pix in Pixels: #condition that the pixel is going out of the screen

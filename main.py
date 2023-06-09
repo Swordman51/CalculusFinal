@@ -206,6 +206,7 @@ while True:
         #TODO WRITE NOT SO EASY NOW IS IT WHEN THE ONE SECOND STUFF STARTS
         ScrollingBackground.DropOb(screen)
 
+
        
 
     elif(Dead == True):
