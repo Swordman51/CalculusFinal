@@ -35,9 +35,13 @@ class ScrollingBackground:
 
     def MakeNewPixel(character): 
         pix = pixel(character.X, character.Y)
+
         Pixels.append(pix)
         
      
+        for pix in Pixels: #condition that the pixel is going out of the screen
+            if(pix.x <=0):
+                Pixels.remove(pix)
       
         
     def DropOb(surface):
