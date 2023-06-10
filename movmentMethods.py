@@ -1,10 +1,10 @@
 import pygame
 import sys
 import ObstacleSprite
+import Variables
 from RandomGeneration import *
 from ObstacleSprite import *
 from pygame.locals import *
-from Variables import *
 from CharacterSprite import *
 from FunctionLine import* 
 
@@ -24,10 +24,10 @@ class ScrollingBackground:
         self.y2_original = self.coord2[1]
 
     def MakeNewOb():
-        pos = GenRandomXOb(1, 780)
-        if (len(Obstacles) < 12):
+        pos = GenRandomXOb(-8, 780)
+        if (len(Obstacles) < Variables.NumOb):
             ob = Obstacle(pos, 1400, ObstacleImg)
-            Obstacles.append(ob)
+            Obstacles.append(ob) 
         else:
             for obstacle in Obstacles:
                 if (obstacle.left <= -100):

@@ -2,6 +2,7 @@ import pygame
 #use Crtl + Shift + P to open the command palette, and from there you can select the python interpretor that you want to use
 import sys
 
+import Pygame_Lights
 from Variables import *
 from RandomGeneration import *
 from CharacterSprite import *
@@ -31,14 +32,6 @@ font2 = pygame.font.SysFont('Jokerman', 25)
 font3 = pygame.font.SysFont('Stencil', 25)
 
 
-# Load the background image here. Make sure the file exists!
-
-#bg_img = pygame.image.load('./backgrounds/orange.png')
-#bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
-
-
-#pygame.mouse.set_visible(0)
-
 pygame.display.set_caption('March for Macragge')
 Generate = False
 Switch = False
@@ -51,55 +44,58 @@ while True:
     
 
     clock.tick(60)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+        elif event.type == pygame.KEYDOWN: #means that the key is pressed down
+            if event.key == pygame.K_UP or event.key == pygame.K_w: #it'll only change when the key is hit once
+                    character.accel_y = -0.5
+            elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                    character.accel_y = 0.5
+            elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+                    character.accel_x = 0.5
+            elif event.key == pygame.K_u:
+                    Beginning = False
+                    Gaming = False
+                    Dead = True
+            elif event.key == pygame.K_b:
+                    if (Beginning == True):
+                        Beginning = False
+                        Gaming = True
+                        Dead = False
+                        pygame.event.clear()
+                        start_ticks = pygame.time.get_ticks()
+            elif event.key == pygame.K_r:
+                    if (Dead == True):
+                        Beginning = True
+                        Gaming = False
+                        Dead = False
+        elif event.type == pygame.KEYUP:
+            if event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_w, pygame.K_s):
+                    character.accel_y = 0
+            if event.key in (pygame.K_RIGHT, pygame.K_d):
+                    character.accel_x = 0
+
     if (Beginning == True):
         bg_img = pygame.image.load('./backgrounds/orange.png')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         #bg_img = pygame.image.load('./backgrounds/orange.png')
         #bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         text = font.render("Press B to begin (get it????)", True, (GREEN))
-       
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_b:
-                    Beginning = False
-                    Gaming = True
-                    Dead = False
-                    start_ticks = pygame.time.get_ticks()
         screen.blit(bg_img, (0, 0))
         screen.blit(text, (700, 350))
         
         
     #screen.blit(bg, (0, 0))
     #x, y = pygame.mouse.get_pos()
-
+    
     elif (Gaming == True):
         #screen = pygame.display.set_mode((screenwidth, screenheight))
         bg_img = pygame.image.load('./backgrounds/blue.png')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.KEYDOWN: #means that the key is pressed down
-                if event.key == pygame.K_UP or event.key == pygame.K_w: #it'll only change when the key is hit once
-                    character.accel_y = -0.5
-                elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
-                    character.accel_y = 0.5
-                elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
-                    character.accel_x = 0.5
-                elif event.key == pygame.K_u:
-                    Beginning = False
-                    Gaming = False
-                    Dead = True
-            elif event.type == pygame.KEYUP:
-                if event.key in (pygame.K_UP, pygame.K_DOWN, pygame.K_w, pygame.K_s):
-                    character.accel_y = 0
-                if event.key in (pygame.K_RIGHT, pygame.K_d):
-                    character.accel_x = 0
-
+   
         character.y_change += character.accel_y
         character.x_change += character.accel_x
 
@@ -108,9 +104,7 @@ while True:
         # Essentially just set it to max speed
             character.y_change = character.y_change/abs(character.y_change) * max_speed_V
         
-        if abs(character.x_change) >= max_speed_H:  # If max_speed is exceeded.
-        # Normalize the x_change and multiply it with the max_speed.
-        # Essentially just set it to max speed
+        if abs(character.x_change) >= max_speed_H:  
             character.x_change = character.x_change/abs(character.x_change) * max_speed_H
         
             # Decelerate if no key is pressed.
@@ -120,6 +114,8 @@ while True:
         if character.accel_x == 0:
             character.x_change *= 0.92
 
+        if character.Y < 20:
+            character.y_change = 20
         character.Y += character.y_change  # Move the object.
         character.X += character.x_change
 
@@ -190,13 +186,14 @@ while True:
         #if you call the method with the name of the object created in front, you don't need to provide the self argument
         #however, if you call the class method, you need to provide the name of the object created.
         #Hero.Show(screen)
-
+     
         #real
         if ScrollingBackground.CheckCollisions(character, Obstacles) == True:
             time.sleep(1.0)
             Beginning = False
             Gaming = False
             Dead = True
+            pygame.event.clear()
         
       
 
@@ -218,16 +215,15 @@ while True:
         screen.blit(bg_img, (0, 0))
         DM = font.render(DeathMessage, True, (255, 0, 0))
         screen.blit(DM, (600, 350))
+        Obstacles.clear()
+        y_change = 0
+        accel_y = 0
+        max_speed_V = 30
+
+        x_change = 0
+        accel_x = 0
+        max_speed_H = 30
         
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_r:
-                    Beginning = True
-                    Gaming = False
-                    Dead = False
 
 
     pygame.display.update()
