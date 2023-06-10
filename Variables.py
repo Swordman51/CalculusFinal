@@ -24,6 +24,7 @@ ObstacleImg = "./backgrounds/EVIL.png"
 Obstacles = [] #you don't need to define the type of list, because you were providing an iterable when you weren't supposed to
 #you are supposed to put iterables in the brackets, and Obstacles aren't an iterable
 Pixels = [] # would this work for pixels in the line as well? 
+DeviousObstacles = []
 
 y_change = 0
 accel_y = 0

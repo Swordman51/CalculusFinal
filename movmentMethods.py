@@ -1,6 +1,4 @@
 import pygame
-import sys
-import ObstacleSprite
 import Variables
 from RandomGeneration import *
 from ObstacleSprite import *
@@ -38,14 +36,12 @@ class ScrollingBackground:
 
         Pixels.append(pix)
         
-     
         for pix in Pixels: #condition that the pixel is going out of the screen
             if(pix.x <=0):
                 Pixels.remove(pix)
       
         
     def DropOb(surface):
-      
         for ob in Obstacles:
             ob.Show(surface)
 
@@ -84,5 +80,23 @@ class ScrollingBackground:
                     if (Character.X + 9 < obstacle.left + obstacle.length and Character.X - 9 > obstacle.left):
                         return True
 
-    
+    def CreateDeviousObject():
+        pos = GenRandomXOb(-8, 780)
+        if (len(DeviousObstacles) < Variables.NumOb):
+            ob = Obstacle(pos, 1400, ObstacleImg)
+            DeviousObstacles.append(ob) 
+        else:
+            for obstacle in DeviousObstacles:
+                if (obstacle.left <= -100):
+                    DeviousObstacles.remove(obstacle)
         
+    def MoveDeviousObject(surface):
+        for ob in DeviousObstacles:
+            ob.Show(surface)
+
+        for obstacle in DeviousObstacles:
+            left = obstacle.left
+            #top -= 40
+            obstacle.UpdateCoords(left-bg_speed)
+            #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
+            #object go downward

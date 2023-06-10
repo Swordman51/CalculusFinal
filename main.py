@@ -25,7 +25,6 @@ character = Character(HeroX, HeroY)
 framerate = 100 
 
 
-
 font = pygame.font.SysFont('Consolas', 18) #you need to initalize pygame to initalize these fonts
 font1 = pygame.font.SysFont('Comic Sans MS', 30)
 font2 = pygame.font.SysFont('Jokerman', 25)
@@ -41,8 +40,6 @@ Switch = False
 start_ticks=pygame.time.get_ticks() #starter tick
 Beginning = True
 while True:
-    
-
     clock.tick(60)
 
     for event in pygame.event.get():
@@ -81,8 +78,6 @@ while True:
     if (Beginning == True):
         bg_img = pygame.image.load('./backgrounds/orange.png')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
-        #bg_img = pygame.image.load('./backgrounds/orange.png')
-        #bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         text = font.render("Press B to begin (get it????)", True, (GREEN))
         screen.blit(bg_img, (0, 0))
         screen.blit(text, (700, 350))
@@ -216,14 +211,9 @@ while True:
         DM = font.render(DeathMessage, True, (255, 0, 0))
         screen.blit(DM, (600, 350))
         Obstacles.clear()
-        y_change = 0
-        accel_y = 0
-        max_speed_V = 30
+        calc.DeathMessage(screen, font)
 
-        x_change = 0
-        accel_x = 0
-        max_speed_H = 30
-        
+
 
 
     pygame.display.update()

@@ -1,9 +1,4 @@
-import pygame
-import sys 
-import os 
 import math
-import time
-import CharacterSprite
 from pygame.locals import * 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -72,3 +67,13 @@ class calc:
       screen.blit(Integ, (950, 190))
       screen.blit(ArcL, (950, 210))
 
+
+  def DeathMessage(screen, font):
+    DM = font.render(Variables.DeathMessage, True, (255, 0, 0))
+    screen.blit(DM, (600, 350))
+    Inte = "Integral = " + str((int)(Variables.totalVolume)) + " in thousands of pixels"
+    Arc = "Arc Length = " + str((int)(Variables.totalArcLength)) + " in pixels"
+    Integ = font.render(Inte, True, Variables.RED)
+    ArcL = font.render(Arc, True, Variables.RED)
+    screen.blit(Integ, (600, 370))
+    screen.blit(ArcL, (600, 390))
