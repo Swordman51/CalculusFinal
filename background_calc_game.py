@@ -26,13 +26,9 @@ class calc:
       changeX = Variables.bg_speed #change in x over the time interval
       changeY = finalYCoorPlayer - initYCoorPlayer # change in y over the time interval
       dydx = changeY/changeX
-
- 
-
       x = sy.Symbol("x")
       Variables.totalArcLength += (sy.integrate(calc.f(dydx), (x, 0, changeX)))
 
-  
   def DisplayPolarFunction(screen, Character, font):
     Magnitude = math.sqrt( ((Character.X - 0)**2) + ((Character.Y - 780)**2))
     Rad = np.arctan((780 - Character.Y)/(Character.X - 0))
@@ -47,7 +43,6 @@ class calc:
     screen.blit(Ang, (1050, 65))
     screen.blit(Radians, (1050, 85))
 
-  
   def DisplayVectorFunction(screen, Character, font):
     PositionFunction = "▲X = " + str((int)(Character.X)) +"i + " + str((int)(780 - Character.Y)) +"j"
     VelocityFunction = "V = " +str((int)(Character.x_change)) + " dx/dt + " + str( -1 * (int)(Character.y_change)) + " dy/dt"

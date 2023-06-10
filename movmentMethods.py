@@ -12,13 +12,9 @@ class ScrollingBackground:
     def __init__(self, screenheight, imagefile):
 
         self.img = pygame.image.load(imagefile)
-
         self.coord = [0, 0]
-
         self.coord2 = [0, -screenheight]
-
         self.y_original = self.coord[1]
-
         self.y2_original = self.coord2[1]
 
     def MakeNewOb():
@@ -33,9 +29,7 @@ class ScrollingBackground:
 
     def MakeNewPixel(character): 
         pix = pixel(character.X - 9, character.Y)
-
         Pixels.append(pix)
-        
         for pix in Pixels: #condition that the pixel is going out of the screen
             if(pix.x <=0):
                 Pixels.remove(pix)

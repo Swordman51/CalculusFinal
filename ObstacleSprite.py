@@ -14,20 +14,12 @@ class Obstacle:
 
 
     def Show(self, surface): 
-
         surface.blit(self.shape, (self.left, self.top))
-
 
     #the first parameter is always the instance the method is called on (self)
     def UpdateCoords(self, y):
-
         self.left = y
 
     def UpdateY(self, x):
-
         self.top = x
     
-   
-#change
-#hello
-

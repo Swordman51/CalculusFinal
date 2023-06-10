@@ -76,16 +76,16 @@ while True:
             if event.key in (pygame.K_RIGHT, pygame.K_d):
                     character.accel_x = 0
 
+
+
     if (Beginning == True):
         bg_img = pygame.image.load('./backgrounds/orange.png')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         text = font.render("Press B to begin (get it????)", True, (GREEN))
+        title = font1.render("CALCULUS DASH", True, (0, 0, 255))
         screen.blit(bg_img, (0, 0))
-        screen.blit(text, (700, 350))
-        
-        
-    #screen.blit(bg, (0, 0))
-    #x, y = pygame.mouse.get_pos()
+        screen.blit(text, (620, 350))
+        screen.blit(title, (625, 250))
     
     elif (Gaming == True):
         #screen = pygame.display.set_mode((screenwidth, screenheight))
@@ -134,7 +134,6 @@ while True:
         screen.blit(bg_img, (0, 0))
         ScrollingBackground.MakeNewPixel(character)
        
-        #time = clock.tick(framerate)/1000.0
         seconds=(pygame.time.get_ticks()-start_ticks)/1000
         timer = "Time = " + str(round(seconds, 2))
         Timer = font.render(timer, True, (0, 0, 0))
@@ -187,12 +186,10 @@ while True:
                 if (TimeBetweenDrop != 1):
                     Generate = True
             
-
         #if you call the method with the name of the object created in front, you don't need to provide the self argument
         #however, if you call the class method, you need to provide the name of the object created.
         #Hero.Show(screen)
-     
-        #real
+
         if ScrollingBackground.CheckCollisions(character, Obstacles, DeviousObstacles) == True:
             time.sleep(1.0)
             Beginning = False
@@ -200,8 +197,6 @@ while True:
             Dead = True
             pygame.event.clear()
         
-      
-
         character.drawCircle(screen)
         ScrollingBackground.MakeNewPixel(character)
         ScrollingBackground.UpdateObPos(character)
@@ -212,22 +207,19 @@ while True:
         calc.arcLengthRefresh(character)
         calc.DisplayScore(screen, font)
         
-
-       
-
     elif(Dead == True):
         bg_img = pygame.image.load('./backgrounds/black.jpg')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
+        title = font1.render("Press R to restart", True, (0, 0, 255))
         screen.blit(bg_img, (0, 0))
         DM = font.render(DeathMessage, True, (255, 0, 0))
         screen.blit(DM, (600, 350))
         Obstacles.clear()
         Pixels.clear()
+        DeviousObstacles.clear()
         deviousbg_speedY = 10
         calc.DeathMessage(screen, font)
-
-
-
+        screen.blit(title, (590, 450))
 
     pygame.display.update()
 

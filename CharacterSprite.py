@@ -20,7 +20,6 @@ class Character:
         self.X = X
         self.Y = Y
 
-
     def drawCircle(self, surface):
         pygame.draw.circle(surface, RED, (self.X, self.Y), 9) 
 
@@ -28,12 +27,9 @@ class Character:
         pygame.draw.circle(surface, RED, (X, Y), 9)
 
     def Show(self, surface):
-
         surface.blit(self.shape, (self.top, self.left))
 
-
     def UpdateCoords(self, x):
-
         self.left = x-self.shape.get_width()/2
 
 

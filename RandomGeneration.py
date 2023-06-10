@@ -5,5 +5,4 @@ def GenRandomXOb(start, stop):
     return random.randint(start, stop)
     
 def GenRandomYOb(start, stop):
-
     return random.randint(start, stop)
