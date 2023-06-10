@@ -1,7 +1,7 @@
 import pygame
 #use Crtl + Shift + P to open the command palette, and from there you can select the python interpretor that you want to use
 import sys
-
+import time
 import Pygame_Lights
 from Variables import *
 from RandomGeneration import *
@@ -64,6 +64,7 @@ while True:
                         Dead = False
                         pygame.event.clear()
                         start_ticks = pygame.time.get_ticks()
+                        character = Character(HeroX, HeroY)
             elif event.key == pygame.K_r:
                     if (Dead == True):
                         Beginning = True
@@ -111,6 +112,9 @@ while True:
 
         if character.Y < 20:
             character.y_change = 20
+        
+        if character.Y > 760:
+             character.y_change = -20
         character.Y += character.y_change  # Move the object.
         character.X += character.x_change
 
@@ -177,13 +181,19 @@ while True:
         else:
             Generate = False
     
-        
+        if((int)(seconds) > 30):
+            if Generate == False:
+                ScrollingBackground.CreateDeviousObject()
+                if (TimeBetweenDrop != 1):
+                    Generate = True
+            
+
         #if you call the method with the name of the object created in front, you don't need to provide the self argument
         #however, if you call the class method, you need to provide the name of the object created.
         #Hero.Show(screen)
      
         #real
-        if ScrollingBackground.CheckCollisions(character, Obstacles) == True:
+        if ScrollingBackground.CheckCollisions(character, Obstacles, DeviousObstacles) == True:
             time.sleep(1.0)
             Beginning = False
             Gaming = False
@@ -195,6 +205,7 @@ while True:
         character.drawCircle(screen)
         ScrollingBackground.MakeNewPixel(character)
         ScrollingBackground.UpdateObPos(character)
+        ScrollingBackground.MoveDeviousObject(screen)
         #TODO WRITE NOT SO EASY NOW IS IT WHEN THE ONE SECOND STUFF STARTS
         ScrollingBackground.DropOb(screen)
         calc.refreshScoreVolume(character)
@@ -211,6 +222,8 @@ while True:
         DM = font.render(DeathMessage, True, (255, 0, 0))
         screen.blit(DM, (600, 350))
         Obstacles.clear()
+        Pixels.clear()
+        deviousbg_speedY = 10
         calc.DeathMessage(screen, font)
 
 

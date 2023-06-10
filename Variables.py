@@ -11,7 +11,7 @@ Beginning = True
 Gaming = False
 Dead = False
 bg_speed = 10
-
+deviousbg_speedY = 10
 totalArcLength = 0
 totalVolume = 0
 

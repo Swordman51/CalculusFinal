@@ -73,16 +73,21 @@ class ScrollingBackground:
             Character.X = 109
     
 
-    def CheckCollisions(Character, Obstacles):
+    def CheckCollisions(Character, Obstacles, DeviousObstacles):
         #if (len(Obstacles) > 0):
             for obstacle in Obstacles:
+                if (Character.Y - 9 > obstacle.top and Character.Y + 9 < obstacle.top + obstacle.height):
+                    if (Character.X + 9 < obstacle.left + obstacle.length and Character.X - 9 > obstacle.left):
+                        return True
+            
+            for obstacle in DeviousObstacles:
                 if (Character.Y - 9 > obstacle.top and Character.Y + 9 < obstacle.top + obstacle.height):
                     if (Character.X + 9 < obstacle.left + obstacle.length and Character.X - 9 > obstacle.left):
                         return True
 
     def CreateDeviousObject():
         pos = GenRandomXOb(-8, 780)
-        if (len(DeviousObstacles) < Variables.NumOb):
+        if (len(DeviousObstacles) < (Variables.NumOb/2)):
             ob = Obstacle(pos, 1400, ObstacleImg)
             DeviousObstacles.append(ob) 
         else:
@@ -95,8 +100,14 @@ class ScrollingBackground:
             ob.Show(surface)
 
         for obstacle in DeviousObstacles:
-            left = obstacle.left
+            left = obstacle.left - bg_speed
+            top = obstacle.top - Variables.deviousbg_speedY
             #top -= 40
-            obstacle.UpdateCoords(left-bg_speed)
+            obstacle.UpdateCoords(left)
+            obstacle.UpdateY(top)
+
+            if(top < 0 or top > 770):
+                Variables.deviousbg_speedY *= -1
+            
             #the screen is generated with the top left corner being 0, 0, so you need to add to the y coordinate to make the
             #object go downward
