@@ -82,6 +82,18 @@ while True:
                     character.accel_y = 0
             if event.key in (pygame.K_RIGHT, pygame.K_d):
                     character.accel_x = 0
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                    character.accel_y = -0.5
+            elif event.button == 2:
+                    character.accel_x = 0.5
+            elif event.button == 3:
+                    character.accel_y = 0.5
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if event.button in ((1, 3)):
+                    character.accel_y = 0
+            if event.button == 2:
+                    character.accel_x = 0
 
 
 
