@@ -1,8 +1,8 @@
 import pygame
 #use Crtl + Shift + P to open the command palette, and from there you can select the python interpretor that you want to use
 import sys
+import os
 import time
-import Pygame_Lights
 from Variables import *
 from RandomGeneration import *
 from CharacterSprite import *
@@ -13,7 +13,7 @@ from background_calc_game import *
 
 
 pygame.init()  # initialize pygame
-
+pygame.mixer.init()
 clock = pygame.time.Clock()
 
 screenwidth, screenheight = (1400, 780)
@@ -30,7 +30,10 @@ font1 = pygame.font.SysFont('Comic Sans MS', 30)
 font2 = pygame.font.SysFont('Jokerman', 25)
 font3 = pygame.font.SysFont('Stencil', 25)
 
-
+collision = pygame.mixer.Sound(os.path.join(s, 'Collision.wav'))
+pygame.mixer.music.load(os.path.join(s, 'Theme.mp3'))
+pygame.mixer.music.set_volume(5)
+pygame.mixer.music.play(-1)
 pygame.display.set_caption('March for Macragge')
 Generate = False
 Switch = False
@@ -41,6 +44,9 @@ start_ticks=pygame.time.get_ticks() #starter tick
 Beginning = True
 while True:
     clock.tick(60)
+    
+
+     
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -67,6 +73,7 @@ while True:
                         character = Character(HeroX, HeroY)
             elif event.key == pygame.K_r:
                     if (Dead == True):
+                        pygame.mixer.music.play(-1)
                         Beginning = True
                         Gaming = False
                         Dead = False
@@ -83,11 +90,15 @@ while True:
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
         text = font.render("Press B to begin (get it????)", True, (GREEN))
         title = font1.render("CALCULUS DASH", True, (0, 0, 255))
+        inst = font.render("Use arrow keys or WASD to move, you cannot move backward", True, (0, 0, 255))
         screen.blit(bg_img, (0, 0))
-        screen.blit(text, (620, 350))
-        screen.blit(title, (625, 250))
+        screen.blit(text, (580, 350))
+        screen.blit(title, (585, 270))
+        screen.blit(inst, (450, 400))
     
     elif (Gaming == True):
+        
+        
         #screen = pygame.display.set_mode((screenwidth, screenheight))
         bg_img = pygame.image.load('./backgrounds/blue.png')
         bg_img = pygame.transform.scale(bg_img,(screenwidth, screenheight))
@@ -155,8 +166,14 @@ while True:
             taunt = "Are you ready for what is coming?"
             Taunt = font1.render(taunt, True, (0, 0, 0))
             screen.blit(Taunt, (700, 350))
+        elif((int)(seconds) < 13):
+            taunt = "You better remember the virtues you stood for"
+            taunt1 = "and the struggles and the things that you have done"
+            Taunt = font1.render(taunt, True, (0, 0, 0))
+            Taunt1 = font1.render(taunt1, True, (0, 0, 0))
+            screen.blit(Taunt, (600, 350))
+            screen.blit(Taunt1, (600, 380))
         elif((int)(seconds) < 17):
-         
             taunt = "Avoid them all"
             Taunt = font.render(taunt, True, (0, 0, 0))
             screen.blit(Taunt, (700, 350))
@@ -191,12 +208,14 @@ while True:
         #Hero.Show(screen)
 
         if ScrollingBackground.CheckCollisions(character, Obstacles, DeviousObstacles) == True:
-            time.sleep(1.0)
+            pygame.mixer.Sound.play(collision)
+            time.sleep(1.5)
+            pygame.mixer.music.stop()
             Beginning = False
             Gaming = False
             Dead = True
-            pygame.event.clear()
-        
+            #pygame.event.clear()
+   
         character.drawCircle(screen)
         ScrollingBackground.MakeNewPixel(character)
         ScrollingBackground.UpdateObPos(character)

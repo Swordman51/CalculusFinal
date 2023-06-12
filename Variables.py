@@ -36,3 +36,4 @@ max_speed_H = 30
 
 DeathMessage = "You have fallen"
 
+s = 'sound'
